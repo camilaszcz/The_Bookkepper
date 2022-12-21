@@ -136,13 +136,13 @@ from .models import Book
 
 class BookCreate(PermissionRequiredMixin, CreateView):
     model = Book
-    fields = ['title', 'author', 'summary', 'pgnum', 'language']
+    fields = ['title', 'author', 'summary', 'pg_num', 'language']
     permission_required = 'my_library.can_mark_returned'
 
 
 class BookUpdate(PermissionRequiredMixin, UpdateView):
     model = Book
-    fields = ['title', 'author', 'summary', 'pgnum', 'language']
+    fields = ['title', 'author', 'summary', 'pg_num', 'language']
     permission_required = 'my_library.can_mark_returned'
 
 
