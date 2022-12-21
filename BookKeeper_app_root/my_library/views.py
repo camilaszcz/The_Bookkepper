@@ -3,8 +3,6 @@ from .models import Language, Book, Author, BookInstance
 
 # Create your views here.
 
-
-
 def index(request):
     # Generate counts of some of the main objects
     num_books = Book.objects.all().count()
@@ -15,9 +13,9 @@ def index(request):
     return render(
         request,
         'index.html',
-        context={'num_books': num_books, 'num_pages': num_pages,
+        context={'num_books': num_books,
                  'num_authors': num_authors,
-                 },
+                 }
     )
 
 
@@ -119,8 +117,7 @@ from .models import Author
 
 class AuthorCreate(PermissionRequiredMixin, CreateView):
     model = Author
-    fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
-    initial = {'date_of_death': '11/06/2020'}
+    fields = ['first_name', 'last_name']
     permission_required = 'my_library.can_mark_returned'
 
 
@@ -135,11 +132,11 @@ class AuthorDelete(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('authors')
     permission_required = 'my_library.can_mark_returned'
 
+from .models import Book
 
-# Classes created for the forms challenge
 class BookCreate(PermissionRequiredMixin, CreateView):
     model = Book
-    fields = ['title', 'author', 'summary', 'pgnum', 'genre', 'language']
+    fields = ['title', 'author', 'summary', 'pgnum', 'language']
     permission_required = 'my_library.can_mark_returned'
 
 

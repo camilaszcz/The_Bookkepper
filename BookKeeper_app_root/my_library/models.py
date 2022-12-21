@@ -20,7 +20,7 @@ class Book(models.Model):
     # Foreign Key used because book can only have one author, but authors can have multiple books
     # Author as a string rather than object because it hasn't been declared yet in file.
     summary = models.TextField(max_length=1000, help_text="Enter a brief description of the book")
-    num_pages = models.IntegerField()
+    pg_num = models.IntegerField()
 
     
     class Meta:
@@ -61,13 +61,16 @@ class BookInstance(models.Model):
         ('o', 'On loan'),
         ('a', 'Available'),
         ('r', 'Reserved'),
+        ('c', 'Currently_reading'),
+        ('n', 'Next_in_line'),
+        ('d', 'Done_reading'),
     )
 
     status = models.CharField(
-        max_length=1,
+        max_length=2,
         choices=LOAN_STATUS,
         blank=True,
-        default='o',
+        default='a',
         help_text='Book availability')
 
     class Meta:

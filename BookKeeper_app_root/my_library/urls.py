@@ -15,12 +15,6 @@ urlpatterns += [
 ]
 
 
-# Add URLConf for librarian to renew a book.
-urlpatterns += [
-    path('book/<uuid:pk>/renew/', views.renew_book_librarian, name='renew-book-librarian'),
-]
-
-
 # Add URLConf to create, update, and delete authors
 urlpatterns = [
     path('author/create/', views.AuthorCreate.as_view(), name='author-create'),

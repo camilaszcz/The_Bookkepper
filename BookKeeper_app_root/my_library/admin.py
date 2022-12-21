@@ -16,7 +16,6 @@ class AuthorAdmin(admin.ModelAdmin):
      - adds inline addition of books in author view (inlines)
     """
     list_display = ('last_name','first_name')
-    fields = ['first_name', 'last_name']
     inlines = [BooksInline]
 
 
@@ -46,14 +45,14 @@ class BookInstanceAdmin(admin.ModelAdmin):
      - filters that will be displayed in sidebar (list_filter)
      - grouping of fields into sections (fieldsets)
     """
-    list_display = ('book', 'status', 'borrower', 'due_back', 'id')
+    list_display = ('book', 'status', 'borrower', 'due_back')
     list_filter = ('status', 'due_back')
 
     fieldsets = (
         (None, {
-            'fields': ('book', 'id')
+            'fields': ('book', 'borrower')
         }),
         ('Availability', {
-            'fields': ('status', 'due_back', 'borrower')
+            'fields': ('status', 'due_back')
         }),
     )
