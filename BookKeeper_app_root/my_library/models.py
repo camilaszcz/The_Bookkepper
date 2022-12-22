@@ -1,8 +1,28 @@
 # Create your models here.
 from django.db import models
 from django.urls import reverse  # To generate URLS by reversing URL patterns
+import uuid  # Required for unique book instances
+from datetime import date
+from django.contrib.auth.models import User  # Required to assign User as a borrower
 
-
+#    create a model loan 
+class Status(models.Model):
+    CHOICES = (
+        ('o', 'On loan'),
+        ('a', 'Available'),
+        ('r', 'Reserved'),
+        ('c', 'Currently_reading'),
+        ('n', 'Next_in_line'),
+        ('d', 'Done_reading'),
+    )
+    
+    status = models.CharField(
+        max_length=1,
+        choices= CHOICES,
+        blank=True,
+        default='a',
+        help_text='Book availability')     
+        
 class Language(models.Model):
     """Model representing a Language (e.g. English, French, Japanese, etc.)"""
     name = models.CharField(max_length=200)                     
@@ -21,7 +41,11 @@ class Book(models.Model):
     # Author as a string rather than object because it hasn't been declared yet in file.
     summary = models.TextField(max_length=1000, help_text="Enter a brief description of the book")
     pg_num = models.IntegerField()
-
+    status = models.ManyToManyField(Status, verbose_name='books')
+    
+    # research verbose name
+    # move status class to top
+    
     
     class Meta:
         """A metaclass is a class whose instances are classes. 
@@ -37,13 +61,6 @@ class Book(models.Model):
         """String for representing the Model object."""
         return self.title
 
-
-import uuid  # Required for unique book instances
-from datetime import date
-
-from django.contrib.auth.models import User  # Required to assign User as a borrower
-
-
 class BookInstance(models.Model):
     """Model representing a specific copy of a book (i.e. that can be borrowed from the library)."""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4,
@@ -51,28 +68,13 @@ class BookInstance(models.Model):
     book = models.ForeignKey('Book', on_delete=models.RESTRICT, null=True) 
     due_back = models.DateField(null=True, blank=True)
     borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    status = models.ManyToManyField(Status, verbose_name='bookintances')
 
     @property
     def is_overdue(self):
         """Determines if the book is overdue based on due date and current date."""
         return bool(self.due_back and date.today() > self.due_back)
-
-    LOAN_STATUS = (
-        ('o', 'On loan'),
-        ('a', 'Available'),
-        ('r', 'Reserved'),
-        ('c', 'Currently_reading'),
-        ('n', 'Next_in_line'),
-        ('d', 'Done_reading'),
-    )
-
-    status = models.CharField(
-        max_length=2,
-        choices=LOAN_STATUS,
-        blank=True,
-        default='a',
-        help_text='Book availability')
-
+    
     class Meta:
         ordering = ['due_back']
         permissions = (("can_mark_returned", "Set book as returned"),)
@@ -80,6 +82,9 @@ class BookInstance(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return '{0} ({1})'.format(self.id, self.book.title)
+
+
+   
 
 
 class Author(models.Model):

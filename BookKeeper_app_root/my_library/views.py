@@ -1,5 +1,12 @@
 from django.shortcuts import render
-from .models import Language, Book, Author, BookInstance
+from .models import Language, Book, Author, BookInstance, Status
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+import datetime
+from django.contrib.auth.decorators import login_required, permission_required
+from my_library.forms import RenewBookForm
+
 
 # Create your views here.
 
@@ -67,14 +74,6 @@ class LoanedBooksAllListView(PermissionRequiredMixin, generic.ListView):
         return BookInstance.objects.filter(status__exact='o').order_by('due_back')
 
 
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-import datetime
-from django.contrib.auth.decorators import login_required, permission_required
-
-
-from my_library.forms import RenewBookForm
 
 
 

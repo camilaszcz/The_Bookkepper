@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Author, Book, BookInstance, Language
+from .models import Author, Book, BookInstance, Language, Status
 
 
 class BooksInline(admin.TabularInline):
@@ -45,7 +45,7 @@ class BookInstanceAdmin(admin.ModelAdmin):
      - filters that will be displayed in sidebar (list_filter)
      - grouping of fields into sections (fieldsets)
     """
-    list_display = ('book', 'status', 'borrower', 'due_back')
+    list_display = ('book', 'borrower', 'due_back')
     list_filter = ('status', 'due_back')
 
     fieldsets = (
