@@ -1,11 +1,28 @@
 # Create your models here.
 from django.db import models
 from django.urls import reverse  # To generate URLS by reversing URL patterns
-import uuid  # Required for unique book instances
 from datetime import date
 from django.contrib.auth.models import User  # Required to assign User as a borrower
 
-#    create a model loan 
+# How to make status and language a dropdown menu?
+# Include texchoice field
+
+# from django_utils.choices import Choice, Choices
+
+# class Book(models.Model):
+#    class STATUS(Choices):
+#        available = Choice('available', _('Available to borrow'))
+#        borrowed = Choice('borrowed', _('Borrowed by someone'))
+#        archived = Choice('archived', _('Archived - not available anymore'))
+
+#    # [...]
+#    status = models.CharField(
+#        max_length=32,
+#        choices=STATUS.choices,
+#        default=STATUS.available,
+#    )
+
+
 class Status(models.Model):
     CHOICES = (
         ('o', 'On loan'),
@@ -22,26 +39,53 @@ class Status(models.Model):
         blank=True,
         default='a',
         help_text='Book availability')     
-        
+
+
+# Include texchoice field
 class Language(models.Model):
     """Model representing a Language (e.g. English, French, Japanese, etc.)"""
-    name = models.CharField(max_length=200)                     
+    CHOICES = (
+        ('En','English'),
+        ('Pt','Portuguese'),
+        ('Sp','Spanish'),
+        ('He', 'Hebrew'),
+        ('It','Italian'),
+        ('Fr', 'French'),
+    )
+    
+    language = models.CharField(
+        max_length=2,
+        choices= CHOICES,
+        blank=True,
+        default='English',
+        help_text='Language')    
+
+class Author(models.Model):
+    """Model representing an author."""
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+
+    class Meta:
+        ordering = ['last_name', 'first_name']
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular author instance."""
+        return reverse('author-detail', args=[str(self.name)])
 
     def __str__(self):
-        """String for representing the Model object (in Admin site etc.)"""
-        return self.name
-
+        """String for representing the Model object."""
+        return '{0}, {1}'.format(self.last_name, self.first_name)
+    
+# Include imagefield for the book cover
 
 class Book(models.Model):
     """Model representing a book."""
     title = models.CharField(max_length=200)
-    author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
-    language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
-    # Foreign Key used because book can only have one author, but authors can have multiple books
-    # Author as a string rather than object because it hasn't been declared yet in file.
+    author = models.CharField(max_length=200)
+    language = models.ManyToManyField('Language', verbose_name='language')
     summary = models.TextField(max_length=1000, help_text="Enter a brief description of the book")
     pg_num = models.IntegerField()
-    status = models.ManyToManyField(Status, verbose_name='books')
+    status = models.ManyToManyField('Status', verbose_name='books')
     
     # research verbose name
     # move status class to top
@@ -55,16 +99,13 @@ class Book(models.Model):
 
     def get_absolute_url(self):
         """Returns the url to access a particular book instance."""
-        return reverse('book-detail', args=[str(self.id)])
+        return reverse('book-detail', args=[str(self.name)])
 
     def __str__(self):
         """String for representing the Model object."""
         return self.title
 
 class BookInstance(models.Model):
-    """Model representing a specific copy of a book (i.e. that can be borrowed from the library)."""
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4,
-                          help_text="Unique ID for this particular book across whole library")
     book = models.ForeignKey('Book', on_delete=models.RESTRICT, null=True) 
     due_back = models.DateField(null=True, blank=True)
     borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
@@ -81,24 +122,9 @@ class BookInstance(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        return '{0} ({1})'.format(self.id, self.book.title)
+        return '({0})'.format(self.book.title)
 
 
    
 
 
-class Author(models.Model):
-    """Model representing an author."""
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-
-    class Meta:
-        ordering = ['last_name', 'first_name']
-
-    def get_absolute_url(self):
-        """Returns the url to access a particular author instance."""
-        return reverse('author-detail', args=[str(self.id)])
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return '{0}, {1}'.format(self.last_name, self.first_name)
