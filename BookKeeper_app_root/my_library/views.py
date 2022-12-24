@@ -22,7 +22,7 @@ def index(request):
     # Render the HTML template index.html with the data in the context variable.
     return render(
         request,
-        'index.html',
+        'base.html',
         context={'num_books': num_books,
                  'num_authors': num_authors,
                  }

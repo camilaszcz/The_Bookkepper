@@ -82,10 +82,10 @@ class Book(models.Model):
     """Model representing a book."""
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
-    language = models.ManyToManyField('Language', verbose_name='language')
+    language = models.ManyToManyField('Language', verbose_name='CHOICES')
     summary = models.TextField(max_length=1000, help_text="Enter a brief description of the book")
     pg_num = models.IntegerField()
-    status = models.ManyToManyField('Status', verbose_name='books')
+    status = models.ManyToManyField('Status', verbose_name='STATUS')
     
     # research verbose name
     # move status class to top
