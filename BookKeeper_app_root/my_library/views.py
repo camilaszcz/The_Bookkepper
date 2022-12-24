@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Language, Book, Author, BookInstance, Status
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 import datetime
 from django.contrib.auth.decorators import login_required, permission_required
 from my_library.forms import RenewBookForm
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+
 
 
 # Create your views here.
@@ -20,9 +20,7 @@ def index(request):
 
 
     # Render the HTML template index.html with the data in the context variable.
-    return render(
-        request,
-        'index.html',
+    return render(request,'books.html',
         context={'num_books': num_books,
                  'num_authors': num_authors,
                  }

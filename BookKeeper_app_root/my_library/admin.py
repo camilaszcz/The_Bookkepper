@@ -45,12 +45,12 @@ class BookInstanceAdmin(admin.ModelAdmin):
      - filters that will be displayed in sidebar (list_filter)
      - grouping of fields into sections (fieldsets)
     """
-    list_display = ('book', 'borrower', 'due_back')
-    list_filter = ('status', 'due_back')
+    list_display = ('title', 'borrower', 'due_back')
+    list_filter = ('book_status', 'due_back')
 
     fieldsets = (
         (None, {
-            'fields': ('book', 'borrower')
+            'fields': ('title', 'borrower')
         }),
         ('Availability', {
             'fields': ('status', 'due_back')
