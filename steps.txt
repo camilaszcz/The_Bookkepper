@@ -58,3 +58,4 @@ name of friend, date borrowed, date due, if returned; score (1-10)
 +
 Books reserved (from friends + next in line + currently reading)
 
+apps accounts, pages, currently reading, next in line, Loans

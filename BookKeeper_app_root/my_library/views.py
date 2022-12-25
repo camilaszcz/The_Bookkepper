@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Language, Book, Author, BookInstance, Status
+from .models import  Book, Author, BookInstance
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import datetime
@@ -9,24 +9,26 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-
+from django.core.paginator import Paginator
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 # Create your views here.
-
+# create a search bar
 def index(request):
-    # Generate counts of some of the main objects
-    num_books = Book.objects.all().count()
+    books = Book.objects.all().count()
     book_instance = BookInstance.objects.all().count()
+    paginator = Paginator(books, 10)
+    page = request.GET.get('page')
+    all_books=paginator.get_page(page)
 
 
     # Render the HTML template index.html with the data in the context variable.
-    return render(
-        request,
-        'base.html',
-        context={'num_books': num_books,
-                 'num_authors': num_authors,
-                 }
-    )
+    context={
+        'books': all_books,
+    }
+    return render(request,'/home.html', context)
+      
+    
 
 class BookListView(generic.ListView):
     """Generic class-based view for a list of books."""
@@ -57,8 +59,6 @@ class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
 
 
 # Added as part of challenge!
-from django.contrib.auth.mixins import PermissionRequiredMixin
-
 
 class LoanedBooksAllListView(PermissionRequiredMixin, generic.ListView):
     """Generic class-based view listing all books on loan. Only visible to users with can_mark_returned permission."""
@@ -136,3 +136,6 @@ class BookDelete(PermissionRequiredMixin, DeleteView):
     model = Book
     success_url = reverse_lazy('books')
     permission_required = 'my_library.can_mark_returned'
+    
+def Books(request):
+    return render(request,'books.html', context)
