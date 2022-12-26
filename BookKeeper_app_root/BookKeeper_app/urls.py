@@ -25,9 +25,11 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    # path("" , include("pages.urls")),
-    path('admin/', admin.site.urls),
-    path('books/', include('my_library.urls')),
-    path('my_library/', include('my_library.urls')),
-    path("accounts/", include('django.contrib.auth.urls'))
+    path("" , include("pages.urls")),
+    path("admin", admin.site.urls),
+    path('my_library', include('my_library.urls')),
+    # path('currently_reading/', include('my_library.urls')),
+    # path('nex_in_line/', include('my_library.urls')),
+    path('loans', include('loans.urls')),
+    path("accounts", include('django.contrib.auth.urls'))
 ] + static (settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

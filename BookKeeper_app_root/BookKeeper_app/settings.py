@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "my_library",
     "loans",
+    "pages",
     # "currently_reading",
     # "next_in_line",
 ]
@@ -132,7 +133,7 @@ LOGIN_REDIRECT_URL = '/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'Bookkeeper_app/static')
+    os.path.join(BASE_DIR, 'BookKeeper_app/static')
     
 ]
 # Default primary key field type
