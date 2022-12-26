@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import  Book, Author, BookInstance
+from .models import  Book, Author, Status, Language
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import datetime
@@ -27,8 +27,7 @@ def index(request):
         'books': all_books,
     }
     return render(request,'/home.html', context)
-      
-    
+       
 
 class BookListView(generic.ListView):
     """Generic class-based view for a list of books."""
@@ -45,61 +44,6 @@ class AuthorListView(generic.ListView):
     """Generic class-based list view for a list of authors."""
     model = Author
     paginate_by = 10
-
-
-
-class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
-    """Generic class-based view listing books on loan to current user."""
-    model = BookInstance
-    template_name = 'my_library/bookinstance_list_borrowed_user.html'
-    paginate_by = 10
-
-    def get_queryset(self):
-        return BookInstance.objects.filter(borrower=self.request.user).filter(status__exact='o').order_by('due_back')
-
-
-# Added as part of challenge!
-
-class LoanedBooksAllListView(PermissionRequiredMixin, generic.ListView):
-    """Generic class-based view listing all books on loan. Only visible to users with can_mark_returned permission."""
-    model = BookInstance
-    permission_required = 'my_library.can_mark_returned'
-    template_name = 'my_library/bookinstance_list_borrowed_all.html'
-    paginate_by = 10
-
-    def get_queryset(self):
-        return BookInstance.objects.filter(status__exact='o').order_by('due_back')
-
-    def renew_book_librarian(request, pk):
-        """View function for renewing a specific BookInstance by librarian."""
-        book_instance = get_object_or_404(BookInstance, pk=pk)
-
-        # If this is a POST request then process the Form data
-        if request.method == 'POST':
-
-            # Create a form instance and populate it with data from the request (binding):
-            form = RenewBookForm(request.POST)
-
-            # Check if the form is valid:
-            if form.is_valid():
-                # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
-                book_instance.due_back = form.cleaned_data['renewal_date']
-                book_instance.save()
-
-                # redirect to a new URL:
-                return HttpResponseRedirect(reverse('all-borrowed'))
-
-        # If this is a GET (or any other method) create the default form
-        else:
-            proposed_renewal_date = datetime.date.today() + datetime.timedelta(weeks=6)
-            form = RenewBookForm(initial={'renewal_date': proposed_renewal_date})
-
-        context = {
-            'form': form,
-            'book_instance': book_instance,
-        }
-
-        return render(request, 'my_library/book_renew_librarian.html', context)
 
 
 class AuthorCreate(PermissionRequiredMixin, CreateView):
@@ -136,6 +80,75 @@ class BookDelete(PermissionRequiredMixin, DeleteView):
     model = Book
     success_url = reverse_lazy('books')
     permission_required = 'my_library.can_mark_returned'
+
+
+
+
+
+# # Create your views here.
+# def index(request):
+#     listings = Listing.objects.order_by('-list_date').filter(is_published=True)
+#     paginator = Paginator(listings, 3)
+#     page = request.GET.get('page')
+#     paged_listings = paginator.get_page(page)
     
-def Books(request):
-    return render(request,'books.html', context)
+#     context = {
+#         'listings': paged_listings,
+#     }
+#     return render(request, 'listings/listings.html', context)
+
+# def listing(request, listing_id):
+    
+    
+#     listing = get_object_or_404(Listing, pk=listing_id)
+    
+#     context = {
+#         'listing' : listing
+#     }
+#     return render(request, 'listings/listing.html', context)
+
+# def search(request):
+#     queryset_list = Listing.objects.order_by('-list_date')
+
+#   # Keywords
+#     if 'keywords' in request.GET:
+#         keywords = request.GET['keywords']
+#         if keywords:
+#             queryset_list = queryset_list.filter(description__icontains=keywords)
+
+#   # City
+#     if 'city' in request.GET:
+#         city = request.GET['city']
+#         if city:
+#             queryset_list = queryset_list.filter(city__iexact=city)
+
+#   # State
+#     if 'state' in request.GET:
+#         state = request.GET['state']
+#         if state:
+#             queryset_list = queryset_list.filter(state__iexact=state)
+
+#   # Bedrooms
+#     if 'bedrooms' in request.GET:
+#         bedrooms = request.GET['bedrooms']
+#         if bedrooms:
+#             queryset_list = queryset_list.filter(bedrooms__lte=bedrooms)
+
+#   # Price
+#     if 'price' in request.GET:
+#         price = request.GET['price']
+#         if price:
+#             queryset_list = queryset_list.filter(price__lte=price)
+
+#     context = {
+        
+#     'state_choices': state_choices,
+#     'bedroom_choices': bedroom_choices,
+#     'price_choices': price_choices,
+#     'listings': queryset_list,
+#     'values': request.GET,
+#   }
+
+#     return render(request, 'listings/search.html', context)
+
+

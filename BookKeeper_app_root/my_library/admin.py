@@ -1,11 +1,21 @@
 from django.contrib import admin
-from .models import Author, Book, BookInstance
+from .models import Author, Book, Status, Language
 
 
+admin.site.register(Author)
+admin.site.register(Status)
+admin.site.register(Language)
 
-class BooksInline(admin.TabularInline):
-    """Defines format of inline book insertion (used in AuthorAdmin)"""
-    model = Book
+class BookAdmin(admin.ModelAdmin):
+    """Administration object for Book models.
+    Defines:
+     - fields to be displayed in list view (list_display)
+     - adds inline addition of book instances in book view (inlines)
+    """
+    list_display = ('title', 'author')
+
+
+admin.site.register(Book, BookAdmin)
 
 
 class AuthorAdmin(admin.ModelAdmin):
@@ -17,43 +27,5 @@ class AuthorAdmin(admin.ModelAdmin):
      - adds inline addition of books in author view (inlines)
     """
     list_display = ('last_name','first_name')
-    inlines = [BooksInline]
 
 
-class BooksInstanceInline(admin.TabularInline):
-    """Defines format of inline book instance insertion (used in BookAdmin)"""
-    model = BookInstance
-
-
-class BookAdmin(admin.ModelAdmin):
-    """Administration object for Book models.
-    Defines:
-     - fields to be displayed in list view (list_display)
-     - adds inline addition of book instances in book view (inlines)
-    """
-    list_display = ('title', 'author')
-    inlines = [BooksInstanceInline]
-
-
-admin.site.register(Book, BookAdmin)
-
-
-@admin.register(BookInstance)
-class BookInstanceAdmin(admin.ModelAdmin):
-    """Administration object for BookInstance models.
-    Defines:
-     - fields to be displayed in list view (list_display)
-     - filters that will be displayed in sidebar (list_filter)
-     - grouping of fields into sections (fieldsets)
-    """
-    list_display = ('booktitle', 'borrower', 'due_back')
-    list_filter = ('status', 'due_back')
-
-    fieldsets = (
-        (None, {
-            'fields': ('booktitle', 'borrower')
-        }),
-        ('Availability', {
-            'fields': ('status', 'due_back')
-        }),
-    )

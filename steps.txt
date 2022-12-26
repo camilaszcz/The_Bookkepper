@@ -2,7 +2,7 @@
 (base) camilaszczerbacki@Camilas-MacBook-Pro Day1 % python3 -m venv 
 (base) camilaszczerbacki@Camilas-MacBook-Pro Day1 % source django_work/bin/activate
 (django_work) (base) camilaszczerbacki@Camilas-MacBook-Pro Day1 % pip install django/ others
-(django_work) (base) camilaszczerbacki@Camilas-MacBook-Pro Day1 % django-admin startproject animal_info
+(django_work) (base) camilaszczerbacki@Camilas-MacBook-Pro Day1 % django-admin startproject 
 (django_work) (base) camilaszczerbacki@Camilas-MacBook-Pro Day1 % cd 
 (django_work) (base) camilaszczerbacki@Camilas-MacBook-Pro animal_info % django-admin startapp 
 
