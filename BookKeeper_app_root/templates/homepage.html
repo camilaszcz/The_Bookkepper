@@ -1,5 +1,17 @@
 {%extends 'base.html'%}
-{%load humanize%}
+{% load static%}
+
+
+<link rel="stylesheet" href="{% static 'css/nicepage.css'%}" media="screen">
+<link rel="stylesheet" href="{% static 'css/HOMEPAGE.css'%}" media="screen">
+<meta name="generator" content="Nicepage 5.2.4, nicepage.com">
+<link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+<link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i|Annie+Use+Your+Telescope:400">
+    
+    <meta name="theme-color" content="#a5abf0">
+    <meta property="og:title" content="HOMEPAGE">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="/">
 
 
 {%block content%}
@@ -23,4 +35,4 @@
     </div>
   </section>
 
-{%endblock content%}
+  {%endblock content%}

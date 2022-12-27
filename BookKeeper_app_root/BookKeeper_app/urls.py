@@ -27,9 +27,14 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("" , include("pages.urls")),
     path("admin/", admin.site.urls),
-    path('my_library/', include('my_library.urls')),
-    # path('currently_reading/', include('my_library.urls')),
-    # path('nex_in_line/', include('my_library.urls')),
+    path("homepage", include("pages.urls")),
+    path("my_library/", include("my_library.urls")),
+    path("currently_reading/", include("my_library.urls")),
+    path('nex_in_line/', include('my_library.urls')),
     path('loans/', include('loans.urls')),
     path("accounts/", include('django.contrib.auth.urls'))
 ] + static (settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+
+
+# if settings.DEBUG:
+#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

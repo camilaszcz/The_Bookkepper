@@ -26,7 +26,7 @@ def index(request):
     context={
         'books': all_books,
     }
-    return render(request,'/home.html', context)
+    return render(request,'/homepage.html', context)
        
 
 class BookListView(generic.ListView):
