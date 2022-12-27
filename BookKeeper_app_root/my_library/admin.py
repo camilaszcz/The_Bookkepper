@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Author, Book, Status, Language
 
 
+
 admin.site.register(Author)
 admin.site.register(Status)
 admin.site.register(Language)

@@ -14,7 +14,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 
 # Create your views here.
 # create a search bar
-def index(request):
+def Bookshelf(request):
     books = Book.objects.all().count()
     book_instance = BookInstance.objects.all().count()
     paginator = Paginator(books, 10)
@@ -26,7 +26,7 @@ def index(request):
     context={
         'books': all_books,
     }
-    return render(request,'/homepage.html', context)
+    return render(request,'/bookshelf.html', context)
        
 
 class BookListView(generic.ListView):

@@ -16,7 +16,7 @@ def index(request):
     #     "status_choices": status_choices,
     #     "language_choices": language_choices,
     # }
-    return render(request, 'HOMEPAGE.html')
+    return render(request, 'homepage.html')
 
 
 def about(request):

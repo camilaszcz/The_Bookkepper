@@ -64,4 +64,4 @@ class LoanedBooksAllListView(PermissionRequiredMixin, generic.ListView):
             'book_instance': book_instance,
         }
 
-        return render(request, 'my_library/book_renew_librarian.html', context)
+        return render(request, 'loans.html', context)

@@ -3,6 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('mybooks/', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
-    path(r'borrowed/', views.LoanedBooksAllListView.as_view(), name='all-borrowed'),  # Added for challenge
+    path('loans/', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
+    path(r'loans/', views.LoanedBooksAllListView.as_view(), name='all-borrowed'),  # Added for challenge
 ]
