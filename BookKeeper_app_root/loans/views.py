@@ -16,11 +16,11 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
     """Generic class-based view listing books on loan to current user."""
     model = BookInstance
-    template_name = 'my_library/bookinstance_list_borrowed_user.html'
+    template_name = 'loans.html'
     paginate_by = 10
 
     def get_queryset(self):
-        return BookInstance.objects.filter(borrower=self.request.user).filter(status__exact='o').order_by('due_back')
+        return BookInstance.objects.filter(borrower=self.request.user).filter(status__exact='1').order_by('due_back')
 
 
 # Added as part of challenge!
@@ -29,11 +29,11 @@ class LoanedBooksAllListView(PermissionRequiredMixin, generic.ListView):
     """Generic class-based view listing all books on loan. Only visible to users with can_mark_returned permission."""
     model = BookInstance
     permission_required = 'my_library.can_mark_returned'
-    template_name = 'my_library/bookinstance_list_borrowed_all.html'
+    template_name = 'loans.html'
     paginate_by = 10
 
     def get_queryset(self):
-        return BookInstance.objects.filter(status__exact='o').order_by('due_back')
+        return BookInstance.objects.filter(status__exact='1').order_by('due_back')
 
     def renew_book_librarian(request, pk):
         """View function for renewing a specific BookInstance by librarian."""

@@ -25,16 +25,17 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path("" , include("pages.urls")),
+    path("" , include("pages.urls")) ,
     path("admin/", admin.site.urls),
-    path("homepage", include("pages.urls")),
-    path("my_library/", include("my_library.urls")),
-    path("currently_reading/", include("my_library.urls")),
-    path('nex_in_line/', include('my_library.urls')),
+    # path("about/", include("pages.urls")),
+    # path("homepage/", include("pages.urls")),
+    path("bookshelf/", include("my_library.urls")),
+    # path("currently_reading/", include("currently_reading.urls")),
+    path('next_in_line/', include('next_in_line.urls')),
     path('loans/', include('loans.urls')),
-    path("accounts/", include('django.contrib.auth.urls'))
-] + static (settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+    path("accounts/", include('django.contrib.auth.urls')),
+] 
 
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

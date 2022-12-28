@@ -9,64 +9,36 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-# import environ
+
 from pathlib import Path
 import os
+import environ
 
-# # Initialise environment variables
-# env = environ.Env(
-# DEBUG=(bool, False)
-# )
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# # Initialise environment variables
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
 # # Take environment variables from .env file
-# environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # False if not in os.environ because of casting above
-# DEBUG = env('DEBUG')
-DEBUG = True
-
+DEBUG = env('DEBUG')
 
 
 # Raises Django's ImproperlyConfigured
 # exception if SECRET_KEY not in os.environ
 
-# SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY=env('SECRET_KEY')
 
-SECRET_KEY = 'django-insecure-6jo9o78y+)0+scs!d!r)rw#hct)9&x*_z#8^y!bk$iz8*-5k)t'
 
-# Parse database connection url strings
-# like psql://user:pass@127.0.0.1:8458/db
-
-# DATABASES = {
-#     # read os.environ['DATABASE_URL'] and raises
-#     # ImproperlyConfigured exception if not found
-#     #
-#     # The db() method is an alias for db_url().
-#     'default': env.db(),
-
-#     # read os.environ['SQLITE_URL']
-#     'extra': env.db_url(
-#         'SQLITE_URL',
-#         default='sqlite:////tmp/my-tmp-sqlite.db'
-#     )
-# }
-
-# CACHES = {
-#     # Read os.environ['CACHE_URL'] and raises
-#     # ImproperlyConfigured exception if not found.
-#     #
-#     # The cache() method is an alias for cache_url().
-#     'default': env.cache(),
-
-#     # read os.environ['REDIS_URL']
-#     'redis': env.cache_url('REDIS_URL')
-# }
 # SECURITY WARNING: don't run with debug turned on in production!
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -78,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "whitenoise.runserver_nostatic",
     "my_library",
     "loans",
     "pages",
@@ -87,6 +60,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -117,24 +92,16 @@ TEMPLATES = [
 WSGI_APPLICATION = "BookKeeper_app.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'The_Bookkeeper',
-        'USER': 'postgres',
-        'PASSWORD': 'Seinfeld2!',
-        'HOST': 'localhost',
+        'NAME':env('DATABASE_NAME'),
+        'USER':env('DATABASE_USER'),
+        'PASSWORD':env('DATABASE_PASSWORD'),
+        'HOST':env('DATABASE_HOST'),
+        'PORT':env('DATABASE_PORT'),
     }
 }
-
-# Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -153,29 +120,25 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "Asia/Jerusalem"
 USE_I18N = True
-
 USE_TZ = True
 
 
-# Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = '/'
+# # Redirect to home URL after login (Default redirects to /accounts/profile/)
+# LOGIN_REDIRECT_URL = '/'
 
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+STATIC_URL = "static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'BookKeeper_app/static')
-    
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -185,7 +148,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # MEDIA_URL = '/media/'
 
-  
 
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
