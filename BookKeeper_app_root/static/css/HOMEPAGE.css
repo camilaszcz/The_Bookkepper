@@ -3,7 +3,7 @@
 }
 
 .u-section-1 .u-layout-wrap-1 {
-  margin-top: 120px;
+  margin-top: 0px;
   margin-bottom: 0;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .u-section-1 .u-image-1 {
-  background-image: url("/BookKeeper_app_root/static/images/main_image.jpg");
+  background-image: url(../images/main_image.jpg);
   background-position: 50% 50%;
   min-height: 670px;
 }

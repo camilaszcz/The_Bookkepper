@@ -30,7 +30,7 @@ urlpatterns = [
     # path("about/", include("pages.urls")),
     # path("homepage/", include("pages.urls")),
     path("bookshelf/", include("my_library.urls")),
-    # path("currently_reading/", include("currently_reading.urls")),
+    path("currently_reading/", include("currently_reading.urls")),
     path('next_in_line/', include('next_in_line.urls')),
     path('loans/', include('loans.urls')),
     path("accounts/", include('django.contrib.auth.urls')),

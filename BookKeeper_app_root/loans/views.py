@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 import datetime
 from django.contrib.auth.decorators import login_required, permission_required
-from my_library.forms import RenewBookForm
+from my_library.forms import CreateBookForm
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -43,7 +43,7 @@ class LoanedBooksAllListView(PermissionRequiredMixin, generic.ListView):
         if request.method == 'POST':
 
             # Create a form instance and populate it with data from the request (binding):
-            form = RenewBookForm(request.POST)
+            form = CreateBookForm(request.POST)
 
             # Check if the form is valid:
             if form.is_valid():

@@ -3,7 +3,7 @@
 }
 
 .u-section-1 .u-layout-wrap-1 {
-  margin-top: 120px;
+  margin-top: 0;
   margin-bottom: 0;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .u-section-1 .u-image-1 {
-  background-image: url("/images/g3eb2fb1332b1cef43281ac5c1203bdf5ab0ae1466b253425940012a5f3edd9a5a0180f92e0f1a52287e324c3c3c5b5679f000722e0c7f799d7e26a5539aa4c95_1280.jpg");
+  background-image: url(../images/main_image.jpg);
   background-position: 50% 50%;
   min-height: 670px;
 }

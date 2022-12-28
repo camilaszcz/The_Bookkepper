@@ -1,16 +1,10 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "../DI_Bootcamp/Week9/Real_Estate_Project"
-		},
-		{
-			"path": "../Django-Videos-W10"
-		}
-	],
-	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "The_Bookkepper"
-	}
+    "folders": [
+        {
+            "path": "BookKeeper_app_root"
+        },
+        {
+            "path": "../DI_Bootcamp/Week9/Real_Estate_Project"
+        }
+    ]
 }

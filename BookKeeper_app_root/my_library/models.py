@@ -4,36 +4,6 @@ from django.urls import reverse  # To generate URLS by reversing URL patterns
 from datetime import date
 from django.contrib.auth.models import User  # Required to assign User as a borrower
 
-# How to make status and language a dropdown menu?
-# Include texchoice field
-# Unless blank=False is set on the field along with a default then a label containing "---------" will be rendered with the select box. To override this behavior, add a tuple to choices containing None; e.g. (None, 'Your String For Display'). Alternatively, you can use an empty string instead of None where this makes sense - such as on a CharField.
-
-# Generally, it’s best to define choices inside a model class, and to define a suitably-named constant for each value:
-
-# from django.db import models
-
-# class Student(models.Model):
-#     FRESHMAN = 'FR'
-#     SOPHOMORE = 'SO'
-#     JUNIOR = 'JR'
-#     SENIOR = 'SR'
-#     GRADUATE = 'GR'
-#     YEAR_IN_SCHOOL_CHOICES = [
-#         (FRESHMAN, 'Freshman'),
-#         (SOPHOMORE, 'Sophomore'),
-#         (JUNIOR, 'Junior'),
-#         (SENIOR, 'Senior'),
-#         (GRADUATE, 'Graduate'),
-#     ]
-#     year_in_school = models.CharField(
-#         max_length=2,
-#         choices=YEAR_IN_SCHOOL_CHOICES,
-#         default=FRESHMAN,
-#     )
-
-#     def is_upperclass(self):
-#         return self.year_in_school in {self.JUNIOR, self.SENIOR}   
-
 
 STATUS_CHOICES = [
         ( 'On_loan' , 'On_loan'),
@@ -90,8 +60,6 @@ class Author(models.Model):
         return '{0}, {1}'.format(self.last_name, self.first_name)
   
         
-    
-# Include imagefield for the book cover
 
 class Book(models.Model):
     """Model representing a book."""
@@ -105,18 +73,16 @@ class Book(models.Model):
     pg_num = models.IntegerField()
     status = models.ForeignKey(Status, related_name='books',on_delete=models.CASCADE)
 
-    # status = models.CharField(max_length=200)
+    # def get_absolute_url(self):
+    #     """Returns the url to access a particular book instance."""
+    #     return reverse('book-detail', args=[str(self.title)])
 
-    def get_absolute_url(self):
-        """Returns the url to access a particular book instance."""
-        return reverse('book-detail', args=[str(self.title)])
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.title
+    # def __str__(self):
+    #     """String for representing the Model object."""
+    #     return self.title
 
 
 
-   
+#    official_homepage = models.fields.URLField(null=True, blank=True)
 
 

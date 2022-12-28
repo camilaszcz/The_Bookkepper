@@ -5,7 +5,7 @@ from .models import Author, Book, Status, Language
 
 admin.site.register(Author)
 admin.site.register(Status)
-admin.site.register(Language)
+
 
 class BookAdmin(admin.ModelAdmin):
     """Administration object for Book models.
