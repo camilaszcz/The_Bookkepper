@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import  Book, Status, Language
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -19,19 +19,22 @@ def Book_add(request):
         form = CreateBookForm(request.POST)
         if form.is_valid():
             # create a new `Book` and save it to the db
-            Book = form.save()
+            book = form.save()
             # redirect to the detail page of the book we just created
             # we can provide the url pattern arguments as arguments to redirect function
-            return redirect('book_detail')
-
-    else:
-        form = CreateBookForm()
+            return redirect('book_detail',pk= book.id)
+        else:
+            print(form.errors)
+         
+    # else:
+    form = CreateBookForm()
 
     return render(request,
-                'book_add',
+                'book_add.html',
                 {'form': form})
     
-    
+   
+        
     # books = Book.objects.all()
     # book_instance = BookInstance.objects.all()
     # paginator = Paginator(books, 10)
@@ -50,12 +53,13 @@ class BookListView(generic.ListView):
     """Generic class-based view for a list of books."""
     model = Book
     paginate_by = 5
+    template_name = 'bookshelf.html'
 
 
 class BookDetailView(generic.DetailView):
     """Generic class-based detail view for a book."""
     model = Book
-
+    template_name = 'book_detail.html'
 
 # class AuthorListView(generic.ListView):
 #     """Generic class-based list view for a list of authors."""

@@ -26,13 +26,19 @@
 
  <h1>Add Book</h1>
 
- <form action="" method="post" novalidate>
+ <form method="post">
    {% csrf_token %}
    {{ form.as_p }}
    <input type="submit" value="Submit">
  </form>
 
-     
+ {% comment %} <form action="" method="post" novalidate>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Submit">
+</form> {% endcomment %}
+
+
  {% include "partials/_footer.html" %}
  <script class="u-script" type="text/javascript" src="{% static 'js/jquery-1.9.1.min.js' %}" defer=""></script>
  <script class="u-script" type="text/javascript" src="{% static 'js/nicepage.js' %}" defer=""></script>

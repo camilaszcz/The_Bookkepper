@@ -26,7 +26,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    # path("" , include("pages.urls")) ,
+    path("" , include("pages.urls")) ,
     # path("" , include("pages.urls")) , 
     
     # How to make the empty address lead to homepage?????????
