@@ -43,29 +43,35 @@ class Language(models.Model):
     def __str__(self):
         return self.language    
 
-class Author(models.Model):
-    """Model representing an author."""
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+# class Author(models.Model):
+#     """Model representing an author."""
+#     first_name = models.CharField(max_length=50)
+#     last_name = models.CharField(max_length=50)
     
-    class Meta:
-        ordering = ['last_name', 'first_name']
+#     class Meta:
+#         ordering = ['last_name', 'first_name']
 
-    def get_absolute_url(self):
-        """Returns the url to access a particular author instance."""
-        return reverse('author-detail', args=[str(self.last_name, self.first_name)])
+#     def get_absolute_url(self):
+#         """Returns the url to access a particular author instance."""
+#         return reverse('author-detail', args=[str(self.last_name, self.first_name)])
 
-    def __str__(self):
-        """String for representing the Model object."""
-        return '{0}, {1}'.format(self.last_name, self.first_name)
+#     def __str__(self):
+#         """String for representing the Model object."""
+#         return '{0}, {1}'.format(self.last_name, self.first_name)
   
         
 
 class Book(models.Model):
     """Model representing a book."""
-    book_cover = models.ImageField(upload_to='media/photos/covers/')
+    book_cover = models.ImageField(upload_to='static/images/covers/')
+    
+    
+    # Check whats going with the uploading of images
+    
+    
     title = models.CharField(max_length=50)
-    author = models.ForeignKey(Author, related_name="books", on_delete = models.SET_NULL, null=True)
+    # author = models.ForeignKey(Author, related_name="books", on_delete = models.SET_NULL, null=True)
+    author = models.CharField(max_length=50)
     # (Author, verbose_name="Author", on_delete=models.CASCADE)
     language = models.ForeignKey(Language, related_name='books',on_delete=models.CASCADE)
     # language = models.CharField(max_length=200)

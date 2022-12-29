@@ -16,16 +16,24 @@ Including another URLconf
 
 from django.urls import path, include
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 # Use include() to add URLS from the catalog application and authentication system
 # Use static() to add url mapping to serve static files during development (only)
 
-from django.conf import settings
-from django.conf.urls.static import static
+
 
 
 urlpatterns = [
-    path("" , include("pages.urls")) ,
+    # path("" , include("pages.urls")) ,
+    # path("" , include("pages.urls")) , 
+    
+    # How to make the empty address lead to homepage?????????
+    # Why are all my addresses being repeated twice at browser?
+    # Error trying to load my_library/book_list?
+    
+    
     path("admin/", admin.site.urls),
     # path("about/", include("pages.urls")),
     # path("homepage/", include("pages.urls")),

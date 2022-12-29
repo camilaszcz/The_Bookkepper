@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import  Book, Author, Status, Language
+from .models import  Book, Status, Language
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import datetime
@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from my_library.forms import CreateBookForm
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, UpdateView, DetailView
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 from django.contrib.auth.mixins import PermissionRequiredMixin
@@ -20,15 +20,15 @@ def Book_add(request):
         if form.is_valid():
             # create a new `Book` and save it to the db
             Book = form.save()
-            # redirect to the detail page of the band we just created
+            # redirect to the detail page of the book we just created
             # we can provide the url pattern arguments as arguments to redirect function
-            return redirect('book-detail', book.id)
+            return redirect('book_detail')
 
     else:
         form = CreateBookForm()
 
     return render(request,
-                'bookshelf/book_add.html',
+                'book_add',
                 {'form': form})
     
     
@@ -49,7 +49,7 @@ def Book_add(request):
 class BookListView(generic.ListView):
     """Generic class-based view for a list of books."""
     model = Book
-    paginate_by = 10
+    paginate_by = 5
 
 
 class BookDetailView(generic.DetailView):
@@ -57,39 +57,39 @@ class BookDetailView(generic.DetailView):
     model = Book
 
 
-class AuthorListView(generic.ListView):
-    """Generic class-based list view for a list of authors."""
-    model = Author
-    paginate_by = 10
+# class AuthorListView(generic.ListView):
+#     """Generic class-based list view for a list of authors."""
+#     model = Author
+#     paginate_by = 10
 
 
-class AuthorCreate(PermissionRequiredMixin, CreateView):
-    model = Author
-    fields = ['first_name', 'last_name']
-    permission_required = 'my_library.can_mark_returned'
+# class AuthorCreate(PermissionRequiredMixin, CreateView):
+#     model = Author
+#     fields = ['first_name', 'last_name']
+#     permission_required = 'my_library.can_mark_returned'
 
 
-class AuthorUpdate(PermissionRequiredMixin, UpdateView):
-    model = Author
-    fields = '__all__' # Not recommended (potential security issue if more fields added)
-    permission_required = 'my_library.can_mark_returned'
+# class AuthorUpdate(PermissionRequiredMixin, UpdateView):
+#     model = Author
+#     fields = '__all__' # Not recommended (potential security issue if more fields added)
+#     permission_required = 'my_library.can_mark_returned'
 
 
-class AuthorDelete(PermissionRequiredMixin, DeleteView):
-    model = Author
-    success_url = reverse_lazy('authors')
-    permission_required = 'my_library.can_mark_returned'
+# class AuthorDelete(PermissionRequiredMixin, DeleteView):
+#     model = Author
+#     success_url = reverse_lazy('authors')
+#     permission_required = 'my_library.can_mark_returned'
 
 
-class BookCreate(PermissionRequiredMixin, CreateView):
-    model = Book
-    fields = ['title', 'author', 'summary', 'pg_num', 'language', 'status']
-    permission_required = 'my_library.can_mark_returned'
+# class BookCreate(PermissionRequiredMixin, CreateView):
+#     model = Book
+#     fields = ['book_cover','title', 'author', 'summary', 'pg_num', 'language', 'status']
+#     permission_required = 'my_library.can_mark_returned'
 
 
 class BookUpdate(PermissionRequiredMixin, UpdateView):
     model = Book
-    fields = ['title', 'author', 'summary', 'pg_num', 'language', 'status']
+    fields = ['book_cover','title', 'author', 'summary', 'pg_num', 'language', 'status']
     permission_required = 'my_library.can_mark_returned'
 
 

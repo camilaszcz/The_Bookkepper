@@ -4,17 +4,17 @@ from . import views
 
 urlpatterns = [
     path('bookshelf/', views.BookListView.as_view(), name='bookshelf'),
-    path('book_list/', views.BookListView.as_view(), name ='books'),
-    path('booklist/', views.BookListView.as_view(), name='booklist'),
-    path('book/<int:pk>', views.BookDetailView.as_view(), name='book-detail'),
+    # path('book_list/', views.BookListView.as_view(), name ='books'),
+    # path('booklist/', views.BookListView.as_view(), name='booklist'),
+    path('book/<int:pk>', views.BookDetailView.as_view(), name='book_detail'),
     # path('authors/', views.AuthorListView.as_view(), name='authors'),
 ]
 
 # Add URLConf to create, update, and delete books
 urlpatterns += [
-    path('book_add/', views.Book_add, name='book_add'),
-    path('book/<int:pk>/update/', views.BookUpdate.as_view(), name='book-update'),
-    path('book/<int:pk>/delete/', views.BookDelete.as_view(), name='book-delete'),
+    path('book_add/', views.Book_add.as_view(), name='book_add'),
+    path('book/<int:pk>/update/', views.BookUpdate.as_view(), name='book_update'),
+    path('book/<int:pk>/delete/', views.BookDelete.as_view(), name='book_delete'),
 ]
 
 # # Add URLConf to create, update, and delete authors
