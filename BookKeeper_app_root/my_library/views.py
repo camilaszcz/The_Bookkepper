@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from my_library.forms import CreateBookForm
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import CreateView, UpdateView, DeleteView, UpdateView, DetailView
+from django.views.generic.edit import  UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 from django.contrib.auth.mixins import PermissionRequiredMixin
@@ -95,5 +95,5 @@ class BookUpdate(PermissionRequiredMixin, UpdateView):
 
 class BookDelete(PermissionRequiredMixin, DeleteView):
     model = Book
-    success_url = reverse_lazy('books')
+    success_url = reverse_lazy('book')
     permission_required = 'my_library.can_mark_returned'
