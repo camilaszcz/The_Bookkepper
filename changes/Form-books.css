@@ -15,7 +15,7 @@
   --track-color: #c0c0c0;
   --track-active-color: #a5abf0;
   width: 650px;
-  margin: 100px auto 0;
+  margin: -21px auto 0;
 }
 
 .u-section-1 .u-form-group-1 {
@@ -115,7 +115,6 @@
   font-weight: 700;
   padding: 14px 0 15px;
 }
-
 
 @media (max-width: 767px) {
   .u-section-1 .u-form-1 {

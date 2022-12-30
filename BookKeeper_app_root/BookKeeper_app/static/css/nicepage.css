@@ -39033,10 +39033,11 @@ a.u-link.u-text-hover-grey-90:hover {
         }
         h1:not(.u-title)
         {
-        font-weight: 400;
+        font-weight: 300;
         font-size: 3rem;
         line-height: 1.1;
-        margin-top: 20px;
+        margin-top: 150px;
+        TEXT-ALIGN: center;
         margin-bottom: 20px;
         }
         h2:not(.u-subtitle)

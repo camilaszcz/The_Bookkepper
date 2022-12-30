@@ -28,7 +28,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("" , include("pages.urls")) ,
     path("admin/", admin.site.urls),
-    path("my_library/", include("my_library.urls")),
+    path("booklist", include("my_library.urls")),
     path("currently_reading/", include("currently_reading.urls")),
     path('next_in_line/', include('next_in_line.urls')),
     path('loans/', include('loans.urls')),

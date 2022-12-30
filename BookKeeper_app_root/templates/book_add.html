@@ -1,0 +1,141 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="ena">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="{% static 'css/nicepage.css'%}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/bookadd.css'%}" media="screen">
+    <meta name="generator" content="Nicepage 5.2.4, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Annie+Use+Your+Telescope:400">
+    <meta name="generator" content="Nicepage 5.2.4, nicepage.com">
+    <meta name="referrer" content="origin">
+  </head>
+
+  <body class="u-body u-xl-mode" data-lang="ena">
+  
+
+  {% include "partials/_navbar.html" %}
+
+
+  <h1>Create new Band</h1>
+
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+  </form>
+
+ {% comment %} <!--Form--> 
+
+<section class="u-clearfix u-section-1" id="sec-fc0d">
+  <div class="u-clearfix u-sheet u-sheet-1">
+ <!--Image--> 
+      <img class="u-image u-image-contain u-image-default u-image-1" src="(images/girl-reading-book-3863818-3238408.png)" alt="" data-image-width="639" data-image-height="450">
+<!--Bookcover-->     
+    <div class="u-form-group u-form-message u-label-top">
+      <form action="" method="post" class="u-clearfix u-form-spacing-13 u-form-vertical u-inner-form" style="padding: 9px;" name="form">
+         <div class="u-form-group u-label-top u-form-group-1"> 
+             <p>
+            <label for="id_book_cover" class="u-custom-font u-font-montserrat u-label u-spacing-0 u-label-1">Book cover</label>
+            <input type= "hidden" name="csrfmiddlewaretoken" value="8sfi6QjRjf7j3ggjbMl98pwF34jcvzP4rE3yRYISnbC96xSEm5lvryeytgaYjHY1">
+            <input type="file" accept="image/*" id="id_book_cover" control-id="ControlID-1" name="csrfmiddlewaretoken" value="8sfi6QjRjf7j3ggjbMl98pwF34jcvzP4rE3yRYISnbC96xSEm5lvryeytgaYjHY1">
+            </p> 
+         </div> 
+
+
+ <!--Book title-->    
+ <div class="u-form-group u-form-message u-label-top"> 
+ <p> 
+  <label for="id_title"class="u-custom-font u-font-montserrat u-label u-spacing-0 u-label-2">BOOK TITLE</label>
+  <input type="text" placeholder="ENTER THE BOOK TITLE" name="title" maxlength="50" required="" id="id_title" control-id="ControlID-2" class="u-custom-font u-font-montserrat u-grey-5 u-input u-input-rectangle u-radius-20 u-input-2"> 
+ </p> 
+ </div> 
+
+ <!--Author-->  
+ <div class="u-form-group u-form-message u-label-top">  
+  <p>
+    <label for="id_author" class="u-custom-font u-font-montserrat u-label u-spacing-0 u-label-3">AUTHOR</label>
+    <input type="text" placeholder="LAST NAME, NAME" name="author" value="Unkown" maxlength="50" required="" id="id_author" control-id="ControlID-3" class="u-custom-font u-font-montserrat u-grey-5 u-input u-input-rectangle u-radius-20 u-input-3"> 
+  </p>
+</div>
+
+ <!--Language-->   
+<div class="u-form-group u-form-partition-factor-2 u-form-select u-label-top u-form-group-6">
+  <p>
+    <label for="id_language" class="u-custom-font u-font-montserrat u-label u-spacing-0 u-label-6">Language:</label>
+      <div class="u-form-select-wrapper">
+        <select name="language" required="" id="id_language" control-id="ControlID-4" class="u-custom-font u-font-montserrat u-grey-5 u-input u-input-rectangle u-radius-20 u-input-6" required="required">
+          <option value="" selected="">---------</option>
+          <option value="4">English</option>
+          <option value="5">Portuguese</option>
+          <option value="6">Spanish</option>
+          <option value="7">Hebrew</option>
+          <option value="8">Italian</option>
+          <option value="9">French</option>
+        </select>  
+      </div>
+  </p>
+</div>
+
+ <!--Description-->   
+<div class="u-form-group u-form-message u-label-top"> 
+ <p>
+    <label for="id_summary" class="u-custom-font u-font-montserrat u-label u-spacing-0 u-label-4">DESCRIPTION</label>
+    <textarea name="summary" placeholder="BOOK DESCRIPTION" class="u-custom-font u-font-montserrat u-grey-5 u-input u-input-rectangle u-radius-20 u-input-4"  cols="40" rows="10" maxlength="1000" required="" id="id_summary" control-id="ControlID-5"></textarea>
+    <br>
+    <span class="helptext">Enter a brief description of the book</span>   
+ </p>
+</div>
+
+<!--Page number-->    
+<div class="u-form-group u-form-number u-form-number-layout-number u-form-partition-factor-2 u-label-top u-form-group-5">
+  <p>
+  <label for="id_pg_num" class="u-custom-font u-font-montserrat u-label u-spacing-0 u-label-5">PAGE NUMBER</label>
+  <div class="u-input-row">
+    <input type="number" name="pg_num" required="" id="id_pg_num" class="u-custom-font u-font-montserrat u-grey-5 u-input u-input-rectangle u-radius-20 u-input-5" control-id="ControlID-6">  
+  </div>
+  </p>
+</div> 
+
+<!--Status--> 
+  <div class="u-form-group">   
+  <p>
+    <label for="id_status" class="u-custom-font u-font-montserrat u-label u-spacing-0 u-label-6">STATUS</label>
+    <div class="u-form-select-wrapper">
+      <select name="status" required="" id="id_status" control-id="ControlID-7" class="u-custom-font u-font-montserrat u-grey-5 u-input u-input-rectangle u-radius-20 u-input-6">
+        <option value="" selected="">---------</option>
+        <option value="4">Reserved</option>
+        <option value="5">Available</option>
+        <option value="6">On_loan</option>
+        <option value="7">Currently_reading</option>
+        <option value="8">Next_in_line</option>
+        <option value="9">Done_reading</option>
+      </select>
+    </div>
+  </p>
+</div>
+
+<!--Submit-->    
+  <input type="submit" value="Submit">
+  
+
+
+</form>
+</div>
+</div>
+</section>   {% endcomment %}
+
+{% include "partials/_footer.html" %}
+
+<script class="u-script" type="text/javascript" src="{% static 'js/jquery-1.9.1.min.js' %}" defer=""></script>
+<script class="u-script" type="text/javascript" src="{% static 'js/nicepage.js' %}" defer=""></script>
+
+</body>
+</html>
+
+
+    

@@ -1,8 +1,11 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404 , redirect
 from .models import Book
 from django.core.paginator import Paginator
 from my_library.forms import CreateBookForm
 from django.urls import reverse_lazy
+from PIL import Image
+from django.core.files.uploadedfile import SimpleUploadedFile
+
 
 # Create your views here.
 
@@ -12,29 +15,25 @@ def book_add(request):
         if form.is_valid():
             # create a new `Book` and save it to the db
             book = form.save()
-            return render(request, 'my_library/book_add.html')
+            # The  form.save()  method not only saves the new object to the database - it also returns that object, which means we can use it in the next step, where we immediately redirect to the newly created band. 
+            # redirect to the detail page of the band we just created
+            # we can provide the url pattern arguments as arguments to redirect function
+            return redirect('book_detail', book.id)
     else:
-            form = CreateBookForm()
+        form = CreateBookForm()
 
-    return render(request,'my_library/my_library.html',{'form': form})
+    return render(request,'book_add.html', {'form': form})
 
 
 def booklist(request):
-    book = Book.objects.order_by('-status')
-    paginator = Paginator(my_library, 4)
-    page = request.GET.get('page')
-    paged_books = paginator.get_page(page)
-    
-    context = {
-        'my_library': paged_books,
-    }
-    return render(request, 'my_library/my_library.html', context)
+    books = Book.objects.all()
+    return render(request,
+           'booklist.html', # point to the new template name
+           {'books': books})
+
 
           
-def bookdetail(request, book_id):
-    book_detail = get_object_or_404(Book, pk=book_id)
-    
-    context = {
-        'book' : book
-    }
-    return render(request, 'my_library/book_detail.html', context)
+def bookdetail(request, id):
+    book= Book.objects.get(id=id)
+    return render(request,'book_detail.html',{'book':book})
+

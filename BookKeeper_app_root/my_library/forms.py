@@ -1,9 +1,4 @@
 from django import forms
-
-from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
-import datetime  # for checking renewal date range.
-
 from my_library.models import Book
 
 
@@ -13,3 +8,6 @@ class CreateBookForm(forms.ModelForm):
         fields = '__all__'
     
     
+# The new class contains a nested class: Meta
+# which specifies the model that this form will be for, 
+# and which fields from that model to include in this form (in this case, all of them). 
