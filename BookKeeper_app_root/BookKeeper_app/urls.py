@@ -27,17 +27,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("" , include("pages.urls")) ,
-    # path("" , include("pages.urls")) , 
-    
-    # How to make the empty address lead to homepage?????????
-    # Why are all my addresses being repeated twice at browser?
-    # Error trying to load my_library/book_list?
-    
-    
     path("admin/", admin.site.urls),
-    # path("about/", include("pages.urls")),
-    # path("homepage/", include("pages.urls")),
-    path("bookshelf/", include("my_library.urls")),
+    path("my_library/", include("my_library.urls")),
     path("currently_reading/", include("currently_reading.urls")),
     path('next_in_line/', include('next_in_line.urls')),
     path('loans/', include('loans.urls')),
