@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <title>booklist</title>
     <link rel="stylesheet" href="{% static 'css/nicepage.css'%}" media="screen">
-    <link rel="stylesheet" href="{% static 'css/booklist.css'%}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/book_detail.css'%}" media="screen">
     <meta name="generator" content="Nicepage 5.2.4, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope:400">
@@ -25,16 +25,17 @@
   {% include "partials/_navbar.html" %}
 
 
-  {{ book.book_cover}}
+ <img> {{ book.book_cover}} 
   <h2>{{ book.title }}</h2>
 
 <ul>
   <li>{{ book.author }}</li>
 <br>
     <li>{{ book.status}}</li>
+   <li> {{ book.description }}</li>
 </ul>
 
-<p>{{ book.description }}</p>
+
 
   <a href="{% url 'booklist' %}">Back to my library</a>
 

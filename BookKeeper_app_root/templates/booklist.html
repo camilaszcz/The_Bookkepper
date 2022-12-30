@@ -28,12 +28,18 @@
   
 <ul>
     {% for book in books %}
-    <li><a href="{% url 'book_detail' book.id %}">{{ book.title }}</a></li>
+    <img class="u-image u-image-contain u-image-default u-image-1"  src="{% static 'images/covers/9780241347768.jpg'%}" alt="" data-image-width="442" data-image-height="482">
+    <li><a href="{% url 'book_detail' book.id %}">{{ book.title }}<br> {{ book.author}}</a></li>
     {% endfor %}
 </ul>
 
    <a href="{% url 'book_add' %}">Add new book</a>
 
+
+
+
+
+   
   {% comment %}
    <section class="u-clearfix u-section-1" id="sec-650c">
     <h2 class="u-align-center u-text u-text-1" data-animation-name="pulse" data-animation-duration="1000" data-animation-direction="" data-lang-pt="MY BOOKSHELF​">MY BOOKSHELF </h2>
