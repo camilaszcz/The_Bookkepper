@@ -8,6 +8,9 @@
         },
         {
             "path": "changes"
+        },
+        {
+            "path": "../../../Downloads/1234"
         }
     ]
 }

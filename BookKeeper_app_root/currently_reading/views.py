@@ -4,4 +4,4 @@ from django.shortcuts import render
 
 
 def Current(request):
-     return render(request, 'currently_reading')
+         return render(request, 'currently_reading.html')

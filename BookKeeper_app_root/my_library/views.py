@@ -12,13 +12,15 @@ def book_add(request):
         if form.is_valid():
             # create a new `Book` and save it to the db
             book = form.save()
-        else:
-            print(form.errors)
-    
-    return render(request, 'my_library/my_library.html')
+            return render(request, 'my_library/book_add.html')
+    else:
+            form = CreateBookForm()
 
-def booklist(request, book_id):
-    my_library = Book.objects.order_by('-status')
+    return render(request,'my_library/my_library.html',{'form': form})
+
+
+def booklist(request):
+    book = Book.objects.order_by('-status')
     paginator = Paginator(my_library, 4)
     page = request.GET.get('page')
     paged_books = paginator.get_page(page)
@@ -30,7 +32,7 @@ def booklist(request, book_id):
 
           
 def bookdetail(request, book_id):
-    book = get_object_or_404(Book, pk=book_id)
+    book_detail = get_object_or_404(Book, pk=book_id)
     
     context = {
         'book' : book

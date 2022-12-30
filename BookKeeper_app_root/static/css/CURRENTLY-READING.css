@@ -1,5 +1,5 @@
  .u-section-1 {
-  min-height: 718px;
+  min-height: 767px;
 }
 
 .u-section-1 .u-group-1 {
@@ -7,7 +7,7 @@
   min-height: 564px;
   background-image: linear-gradient(#fdfbf1, #89c7d4);
   height: auto;
-  margin: 133px calc(((100% - 1140px) / 2)) 0 auto;
+  margin: 184px calc(((100% - 1140px) / 2)) 0 auto;
 }
 
 .u-section-1 .u-container-layout-1 {
@@ -23,50 +23,17 @@
   width: 335px;
   min-height: 470px;
   height: auto;
-  margin: 14px auto 0;
+  margin: 26px auto 0;
 }
 
 .u-section-1 .u-container-layout-2 {
   padding: 23px 30px;
 }
 
-.u-section-1 .u-group-3 {
-  min-height: 297px;
-  height: auto;
-  width: 259px;
-  margin: 0 24px 0 auto;
-}
-
-.u-section-1 .u-container-layout-3 {
-  padding: 30px 0;
-}
-
-.u-section-1 .u-image-1 {
-  width: 207px;
-  height: 207px;
-  margin: 0 auto;
-}
-
-.u-section-1 .u-group-4 {
-  min-height: 101px;
-  width: 256px;
-  height: auto;
-  margin: 14px 27px 0 auto;
-}
-
-.u-section-1 .u-container-layout-4 {
-  padding-left: 14px;
-  padding-right: 14px;
-}
-
-.u-section-1 .u-text-2 {
-  margin: 0;
-}
-
 .u-section-1 .u-shape-1 {
   width: 673px;
   height: 672px;
-  margin: -493px auto 0 calc(((100% - 1140px) / 2) + -34px);
+  margin: -522px auto 0 calc(((100% - 1140px) / 2) + -34px);
 }
 
 .u-section-1 .u-shape-2 {
@@ -75,21 +42,21 @@
   margin: -740px auto 0 calc(((100% - 1140px) / 2) + 39px);
 }
 
-.u-section-1 .u-group-5 {
+.u-section-1 .u-group-3 {
   width: 351px;
   height: 351px;
   margin: -525px auto 0 calc(((100% - 1140px) / 2) + 152px);
 }
 
-.u-section-1 .u-container-layout-5 {
+.u-section-1 .u-container-layout-3 {
   padding: 30px;
 }
 
-.u-section-1 .u-text-3 {
+.u-section-1 .u-text-2 {
   transition-duration: 0.5s;
   text-shadow: 2px 0 0 rgba(0,0,0,0);
   transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
-  margin: -500px calc(((100% - 1140px) / 2) + 784px) 60px calc(((100% - 1140px) / 2) + 70px);
+  margin: -500px calc(((100% - 1140px) / 2) + 749px) 37px calc(((100% - 1140px) / 2) + 72px);
 }
 
 @media (max-width: 1199px) {
@@ -102,16 +69,6 @@
     height: auto;
   }
 
-  .u-section-1 .u-group-3 {
-    margin-right: 16px;
-    height: auto;
-  }
-
-  .u-section-1 .u-group-4 {
-    margin-right: 19px;
-    height: auto;
-  }
-
   .u-section-1 .u-shape-1 {
     margin-top: 20px;
     margin-left: calc(((100% - 940px) / 2) + -34px);
@@ -121,13 +78,13 @@
     margin-left: calc(((100% - 940px) / 2) + 39px);
   }
 
-  .u-section-1 .u-group-5 {
+  .u-section-1 .u-group-3 {
     margin-left: calc(((100% - 940px) / 2) + 152px);
     height: auto;
   }
 
-  .u-section-1 .u-text-3 {
-    margin-right: calc(((100% - 940px) / 2) + 654px);
+  .u-section-1 .u-text-2 {
+    margin-right: calc(((100% - 940px) / 2) + 621px);
     margin-left: calc(((100% - 940px) / 2));
   }
 }
@@ -145,12 +102,12 @@
     margin-left: calc(((100% - 720px) / 2) + 21px);
   }
 
-  .u-section-1 .u-group-5 {
+  .u-section-1 .u-group-3 {
     margin-left: calc(((100% - 720px) / 2) + 152px);
   }
 
-  .u-section-1 .u-text-3 {
-    margin-right: calc(((100% - 720px) / 2) + 434px);
+  .u-section-1 .u-text-2 {
+    margin-right: calc(((100% - 720px) / 2) + 401px);
     margin-left: calc(((100% - 720px) / 2));
   }
 }
@@ -170,11 +127,6 @@
     padding-right: 10px;
   }
 
-  .u-section-1 .u-container-layout-4 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
   .u-section-1 .u-shape-1 {
     width: 540px;
     margin-left: calc(((100% - 540px) / 2));
@@ -185,17 +137,17 @@
     margin-left: calc(((100% - 540px) / 2));
   }
 
-  .u-section-1 .u-group-5 {
+  .u-section-1 .u-group-3 {
     margin-left: calc(((100% - 540px) / 2) + 152px);
   }
 
-  .u-section-1 .u-container-layout-5 {
+  .u-section-1 .u-container-layout-3 {
     padding-left: 10px;
     padding-right: 10px;
   }
 
-  .u-section-1 .u-text-3 {
-    margin-right: calc(((100% - 540px) / 2) + 254px);
+  .u-section-1 .u-text-2 {
+    margin-right: calc(((100% - 540px) / 2) + 221px);
     margin-left: calc(((100% - 540px) / 2));
   }
 }
@@ -208,7 +160,7 @@
   .u-section-1 .u-group-1 {
     width: 371px;
     min-height: 536px;
-    margin-top: 164px;
+    margin-top: 163px;
     margin-right: auto;
   }
 
@@ -237,31 +189,6 @@
     padding-right: 0;
   }
 
-  .u-section-1 .u-group-3 {
-    width: 198px;
-    min-height: 227px;
-    margin-top: 10px;
-    margin-right: 32px;
-  }
-
-  .u-section-1 .u-image-1 {
-    width: 158px;
-    height: 158px;
-  }
-
-  .u-section-1 .u-group-4 {
-    width: 200px;
-    min-height: 102px;
-    margin-top: 28px;
-    margin-right: 30px;
-    margin-left: 45px;
-  }
-
-  .u-section-1 .u-text-2 {
-    width: auto;
-    margin-top: 20px;
-  }
-
   .u-section-1 .u-shape-1 {
     width: calc(((100% - 340px) / 2) + 371px);
     height: 458px;
@@ -278,31 +205,31 @@
     margin-left: auto;
   }
 
-  .u-section-1 .u-group-5 {
+  .u-section-1 .u-group-3 {
     width: 196px;
     min-height: 197px;
     margin-top: -304px;
     margin-left: auto;
   }
 
-  .u-section-1 .u-text-3 {
+  .u-section-1 .u-text-2 {
     width: auto;
     margin-top: -319px;
-    margin-right: calc(((100% - 340px) / 2) + 54px);
+    margin-right: calc(((100% - 340px) / 2) + 21px);
     margin-left: calc(((100% - 340px) / 2));
   }
 }
 
-.u-section-1 .u-text-3,
-.u-section-1 .u-text-3:before,
-.u-section-1 .u-text-3 > .u-container-layout:before {
+.u-section-1 .u-text-2,
+.u-section-1 .u-text-2:before,
+.u-section-1 .u-text-2 > .u-container-layout:before {
   transition-property: fill, color, background-color, stroke-width, border-style, border-width, border-top-width, border-left-width, border-right-width, border-bottom-width, custom-border, borders, box-shadow, text-shadow, opacity, border-radius, stroke, border-color, font-size, font-style, font-weight, text-decoration, letter-spacing, transform, background-image, image-zoom, background-size, background-position;
 }
 
-.u-section-1 .u-container-layout:hover .u-text-3 {
+.u-section-1 .u-container-layout:hover .u-text-2 {
   transform: rotate(0deg) scale(1) translateX(0px) translateY(0px) !important;
 }
 
-.u-container-layout.hover .u-section-1 .u-text-3 {
+.u-container-layout.hover .u-section-1 .u-text-2 {
   transform: rotate(0deg) scale(1) translateX(0px) translateY(0px) !important;
 }
