@@ -52,7 +52,7 @@
             
              <h4> {{ book.title }}</h4>
               {% if book.book_cover %}
-                  <img src= "{% static 'images/covers/{{book.title}}' %}" alt="{{ book.title }}" style="width:100px; height: 100px">
+                  <img src= "{% static 'images/covers/' %}" alt="{{ book.title }}" style="width:100px; height: 100px">
                   {% else %}
                   <span class="text-muted">No cover </span>
                   {% endif %}
