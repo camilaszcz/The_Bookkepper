@@ -32,19 +32,21 @@
               <div class="u-align-left u-container-style u-layout-cell u-left-cell u-size-20 u-size-20-md u-layout-cell-1" src="">
                 
                 
-                <div class="u-container-layout u-container-layout-1" src="">
-                  <div class="u-palette-1-base u-preserve-proportions u-shape u-shape-circle u-shape-1"></div>
-                  
-              
-
+                <div class="u-container-layout u-container-layout-1" src="">                  
                   <h1 class="u-align-center u-text u-text-1" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
-                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress" role="progressbar" aria-label="" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    
+                      <div class="image_progress">
+                      <img src="{% static 'images/ind_progress.webp' %}">
+                    </div>
+
                       <div class="progress-bar" style="width: 25%">25%</div>
                       <p> 25/100 pages read so far</p>
                     </div>
+                    
                   </h1>
                   <h2 class="u-align-center u-text u-text-1" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">Progress</h2>
-                  <h6 class="u-text u-text-3">Check your reading pace...</h6>
+                  <h6 class="u-text u-text-3">Check your reading pace...   (IN CONSTRUCTION)</h6>
                   <h6 class="u-text u-text-3">You started reading at: dd/mm/yyyy</h6>
                   <h6 class="u-text u-text-3">You read: x pages out of xxx</h6>
                   <h6 class="u-text u-text-3">You read: x.x pages per day.</h6>
@@ -65,11 +67,11 @@
                   <h2 class="u-text u-text-4">  Brave New World  </h2>
                   <h4 class="u-text u-text-5">  Huxley, Aldous  </h4>
                   <p class="u-text u-text-6">    Aldous Huxley's profoundly important classic of world literature, Brave New World is a searching vision of an unequal, technologically-advanced future where humans are genetically bred, socially indoctrinated, and pharmaceutically anesthetized to passively uphold an authoritarian ruling order--all at the cost of our freedom, full humanity, and perhaps also our souls. "A genius [who] who spent his life decrying the onward march of the Machine" (The New Yorker), Huxley was a man of incomparable talents: equally an artist, a spiritual seeker, and one of history's keenest observers of human nature and civilization. </p>
-                  <a href="" class="u-border-1 u-border-black u-border-hover-palette-2-base u-btn u-btn-rectangle u-button-style u-none u-text-body-color u-text-hover-palette-2-base u-btn-1">learn more</a>
+                  <a href="{% url 'booklist'%}" class="u-border-1 u-border-black u-border-hover-palette-2-base u-btn u-btn-rectangle u-button-style u-none u-text-body-color u-text-hover-palette-2-base u-btn-1">BACK TO BOOKS</a>
                 </div>
               </div>
             </div>
-          </div>
+          </div> 
         </div>
       </div>
     </section>

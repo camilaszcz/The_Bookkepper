@@ -39448,3 +39448,10 @@ a.u-link.u-text-hover-grey-90:hover {
  /*begin-variables base-font-size*/ 
  html { font-size: 16px; }
  /*end-variables base-font-size*/
+
+
+ .u-align-left .u-container-style .u-layout-cell .u-left-cell .u-size-20 .u-size-20-md .u-layout-cell-1{
+  background-image: url( ../static/images/ind_progress.webp);
+  background-size: contain;
+  background-position:top;
+ }
