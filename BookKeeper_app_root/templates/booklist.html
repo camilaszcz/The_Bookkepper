@@ -26,75 +26,55 @@
 <h1> MY BOOKSHELF </H1>
 
   
-<ul>
-    {% for book in books %}
-    <img class="u-image u-image-contain u-image-default u-image-1"  src="{% static 'images/covers/9780241347768.jpg'%}" alt="" data-image-width="442" data-image-height="482">
-    <li><a href="{% url 'book_detail' book.id %}">{{ book.title }}<br> {{ book.author}}</a></li>
-    {% endfor %}
-</ul>
+<div class="add button">
+   <a href="{% url 'book_add' %}" class="u-border-1 u-border-active-grey-70 u-border-black u-border-hover-grey-70 
+    u-bottom-right-radius-0 u-btn 
+   u-button-style u-custom-item u-none u-radius-0 u-text-active-palette-2-base u-text-body-color u-text-hover-palette-2-base 
+   u-top-left-radius-0 u-top-right-radius-0 u-btn-2 ">Add new book</a>
+</div>
 
-   <a href="{% url 'book_add' %}">Add new book</a>
-
-
-
-
-
-   
-  {% comment %}
+  
    <section class="u-clearfix u-section-1" id="sec-650c">
-    <h2 class="u-align-center u-text u-text-1" data-animation-name="pulse" data-animation-duration="1000" data-animation-direction="" data-lang-pt="MY BOOKSHELF​">MY BOOKSHELF </h2>
     <div class="book_cards u-list u-list-1">
       <div class="u-repeater u-repeater-1">
 
+        {% if books %}
 
-        <div class="u-align-center u-border-9 u-border-no-bottom u-border-no-left u-border-no-right u-border-palette-4-dark-1 u-bottom-left-radius-18 u-bottom-right-radius-18 u-container-style u-image u-list-item u-repeater-item u-shape-round u-video-cover u-image-1" data-image-width="2000" data-image-height="1333">
+        {% for book in books %}
+
+          <div class="u-align-center u-border-9  u-border-palette-4-dark-1 
+                      u-bottom-left-radius-18 u-bottom-right-radius-18 u-container-style u-image u-list-item u-repeater-item u-shape-round
+                      u-video-cover u-image-1" 
+                      data-image-width="2000" data-image-height="1333">
+
           <div class="u-container-layout u-similar-container u-container-layout-1">
-            <a href="#sec-bfea" class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-item u-dialog-link u-hover-palette-1-dark-1 u-palette-1-base u-radius-50 u-btn-1" data-lang-pt="{&quot;content&quot;:&quot;ADD&quot;,&quot;href&quot;:&quot;#sec-bfea&quot;}">ADD</a>
-            <h4 class="u-text u-text-2" data-lang-pt="BOOK TITLE">BOOK TITLE</h4>
-            <a href="/Book-Detail.html" class="u-border-1 u-border-active-grey-70 u-border-black u-border-hover-grey-70 u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-style u-custom-item u-none u-radius-0 u-text-active-palette-2-base u-text-body-color u-text-hover-palette-2-base u-top-left-radius-0 u-top-right-radius-0 u-btn-2" data-lang-pt="{&quot;content&quot;:&quot;Book Detail&quot;,&quot;href&quot;:&quot;3670465&quot;}">Book Detail</a>
+            <h4 class="u-text u-text-2" data-lang-pt="BOOK TITLE">
+            
+              {{ book.title }}</h4>
+              <br> {{ book.author}}
+           
+            <a href="{url 'book_detail', book.id')" 
+            class="u-border-1 u-border-active-grey-70 u-border-black u-border-hover-grey-70 
+            u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn 
+            u-button-style u-custom-item u-none u-radius-0 u-text-active-palette-2-base u-text-body-color u-text-hover-palette-2-base 
+            u-top-left-radius-0 u-top-right-radius-0 u-btn-2" >Book Detail</a>
           </div>
         </div>
+        {% endfor %}
 
-
-        <div class="u-align-center u-border-9 u-border-no-bottom u-border-no-left u-border-no-right u-border-palette-4-dark-1 u-bottom-left-radius-18 u-bottom-right-radius-18 u-container-style u-image u-list-item u-repeater-item u-shape-round u-video-cover u-image-2" data-image-width="2000" data-image-height="1333">
-          <div class="u-container-layout u-similar-container u-container-layout-2">
-            <a href="#sec-bfea" class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-item u-dialog-link u-hover-palette-1-dark-1 u-palette-1-base u-radius-50 u-btn-3" data-lang-pt="{&quot;content&quot;:&quot;ADD&quot;,&quot;href&quot;:&quot;#sec-bfea&quot;}">ADD</a>
-            <h4 class="u-text u-text-3" data-lang-pt="​BOOK TITLE"> BOOK TITLE</h4>
-            <a href="https://nicepage.com" class="u-border-1 u-border-active-grey-70 u-border-hover-grey-70 u-border-no-left u-border-no-right u-border-no-top u-border-palette-2-base u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-style u-custom-item u-none u-radius-0 u-text-active-palette-2-base u-text-body-color u-text-hover-palette-2-base u-top-left-radius-0 u-top-right-radius-0 u-btn-4" data-lang-pt="{&quot;content&quot;:&quot;more&quot;,&quot;href&quot;:&quot;https://nicepage.com&quot;}">more</a>
-          </div>
+        {% else %}
+        <div class="col-md-12">
+          <p> No books avaiable </p>
         </div>
+        
+        {% endif %}
 
-
-        <div class="u-align-center u-border-9 u-border-no-bottom u-border-no-left u-border-no-right u-border-palette-4-dark-1 u-bottom-left-radius-18 u-bottom-right-radius-18 u-container-style u-image u-list-item u-repeater-item u-shape-round u-video-cover u-image-3" data-image-width="2000" data-image-height="1333">
-          <div class="u-container-layout u-similar-container u-container-layout-3">
-            <a href="#sec-bfea" class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-item u-dialog-link u-hover-palette-1-dark-1 u-palette-1-base u-radius-50 u-btn-5" data-lang-pt="{&quot;content&quot;:&quot;ADD&quot;,&quot;href&quot;:&quot;#sec-bfea&quot;}">ADD</a>
-            <h4 class="u-text u-text-4" data-lang-pt="​BOOK TITLE"> BOOK TITLE</h4>
-            <a href="https://nicepage.com" class="u-border-1 u-border-active-grey-70 u-border-hover-grey-70 u-border-no-left u-border-no-right u-border-no-top u-border-palette-2-base u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-style u-custom-item u-none u-radius-0 u-text-active-palette-2-base u-text-body-color u-text-hover-palette-2-base u-top-left-radius-0 u-top-right-radius-0 u-btn-6" data-lang-pt="{&quot;content&quot;:&quot;more&quot;,&quot;href&quot;:&quot;https://nicepage.com&quot;}">more</a>
-          </div>
-        </div>
-
-
-        <div class="u-align-center u-border-9 u-border-no-bottom u-border-no-left u-border-no-right u-border-palette-4-dark-1 u-bottom-left-radius-18 u-bottom-right-radius-18 u-container-style u-image u-list-item u-repeater-item u-shape-round u-video-cover u-image-4" data-image-width="2000" data-image-height="1333">
-          <div class="u-container-layout u-similar-container u-container-layout-4">
-            <a href="#sec-bfea" class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-item u-dialog-link u-hover-palette-1-dark-1 u-palette-1-base u-radius-50 u-btn-7" data-lang-pt="{&quot;content&quot;:&quot;ADD&quot;,&quot;href&quot;:&quot;#sec-bfea&quot;}">ADD</a>
-            <h4 class="u-text u-text-5" data-lang-pt="​BOOK TITLE"> BOOK TITLE</h4>
-            <a href="https://nicepage.com" class="u-border-1 u-border-active-grey-70 u-border-hover-grey-70 u-border-no-left u-border-no-right u-border-no-top u-border-palette-2-base u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-style u-custom-item u-none u-radius-0 u-text-active-palette-2-base u-text-body-color u-text-hover-palette-2-base u-top-left-radius-0 u-top-right-radius-0 u-btn-8" data-lang-pt="{&quot;content&quot;:&quot;more&quot;,&quot;href&quot;:&quot;https://nicepage.com&quot;}">more</a>
-          </div>
-        </div>
-
-
-        <div class="u-align-center u-border-9 u-border-no-bottom u-border-no-left u-border-no-right u-border-palette-4-dark-1 u-bottom-left-radius-18 u-bottom-right-radius-18 u-container-style u-image u-list-item u-repeater-item u-shape-round u-video-cover u-image-5" data-image-width="2000" data-image-height="1333">
-          <div class="u-container-layout u-similar-container u-container-layout-5">
-            <a href="#sec-bfea" class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-item u-dialog-link u-hover-palette-1-dark-1 u-palette-1-base u-radius-50 u-btn-9" data-lang-pt="{&quot;content&quot;:&quot;ADD&quot;,&quot;href&quot;:&quot;#sec-bfea&quot;}">ADD</a>
-            <h4 class="u-text u-text-6" data-lang-pt="​BOOK TITLE"> BOOK TITLE</h4>
-            <a href="https://nicepage.com" class="u-border-1 u-border-active-grey-70 u-border-hover-grey-70 u-border-no-left u-border-no-right u-border-no-top u-border-palette-2-base u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-style u-custom-item u-none u-radius-0 u-text-active-palette-2-base u-text-body-color u-text-hover-palette-2-base u-top-left-radius-0 u-top-right-radius-0 u-btn-10" data-lang-pt="{&quot;content&quot;:&quot;more&quot;,&quot;href&quot;:&quot;https://nicepage.com&quot;}">more</a>
-          </div>
-        </div>
+        
 
         
       </div>
     </div>
-  </section> {% endcomment %}
+  </section> 
   
   {% include "partials/_footer.html" %}
   <script class="u-script" type="text/javascript" src="{% static 'js/jquery-1.9.1.min.js' %}" defer=""></script>

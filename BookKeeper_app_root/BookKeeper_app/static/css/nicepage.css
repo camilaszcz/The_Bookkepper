@@ -1007,7 +1007,7 @@ ol {
 }
 .u-btn {
   /*display: inline-block;*/
-  display: table;
+  display: block;
   /*TODO maye need another solution for negative marin*/
   cursor: pointer;
   color: inherit;
@@ -1029,7 +1029,7 @@ ol {
   -webkit-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  vertical-align: middle;
+  align-items: center;
   text-align: center;
   padding: 10px 30px;
   border-radius: 0;
@@ -21717,7 +21717,7 @@ a.u-button-style.u-border-8 {
 .u-separator-9:after,
 .u-text.u-border-9,
 a.u-button-style.u-border-9 {
-  border-width: 9px;
+  border-width: 16px;
 }
 .u-shape-svg.u-border-9 {
   stroke-width: 9px;
@@ -32267,7 +32267,7 @@ li.active > a.u-button-style.u-button-style.u-border-active-white {
 .u-button-style.u-border-black {
   border-color: #000000 ;
   color: #000000 ;
-  background-color: transparent ;
+  background-color: #a39559 ;
 }
 .u-button-style.u-border-black:hover,
 .u-button-style.u-border-black:focus {
@@ -39103,6 +39103,8 @@ a.u-link.u-text-hover-grey-90:hover {
         {
         margin-top: 20px;
         margin-bottom: 20px;
+        margin-left: 90px;
+        margin-right: 90px;
         }
         blockquote
         {
