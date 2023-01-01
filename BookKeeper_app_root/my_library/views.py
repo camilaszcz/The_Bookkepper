@@ -11,7 +11,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 def book_add(request):
     if request.method == 'POST':
-        form = CreateBookForm(request.POST)
+        form = CreateBookForm(request.POST, request.FILES)
         if form.is_valid():
             # create a new `Book` and save it to the db
             book = form.save()

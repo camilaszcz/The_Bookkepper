@@ -22,7 +22,7 @@
 
 .u-section-1 .u-image-1 {
   height: 367px;
-  width: 284px;
+  /* width: 284px; */
   margin: 7px auto 0;
 }
 
@@ -62,6 +62,8 @@
 .u-section-1 .u-container-layout-3 {
   padding-left: 30px;
   padding-right: 30px;
+  text-align: center;
+  background-color: rgb(160, 199, 199);
 }
 
 .u-section-1 .u-btn-1 {

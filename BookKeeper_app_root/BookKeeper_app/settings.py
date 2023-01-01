@@ -127,8 +127,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# # Redirect to home URL after login (Default redirects to /accounts/profile/)
-# LOGIN_REDIRECT_URL = '/'
+
 
 
 
@@ -145,9 +144,11 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-# MEDIA_URL = '/media/'
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+STATIC_DIRS = [
+    os.path.join(BASE_DIR, 'BookKeeper_app/media')
+]
 
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {

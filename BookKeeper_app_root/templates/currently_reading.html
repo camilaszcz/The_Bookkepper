@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
-    <meta name="description" content="">
+    <meta name="summary" content="">
     <title>CURRENTLY READING</title>
     <link rel="stylesheet" href="{% static 'css/nicepage.css'%}" media="screen">
     <link rel="stylesheet" href="{% static 'css/CURRENTLY-READING.css'%}" media="screen">
@@ -36,10 +36,7 @@
                   <h1 class="u-align-center u-text u-text-1" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
                     <div class="progress" role="progressbar" aria-label="" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                     
-                      <div class="image_progress">
-                      <img src="{% static 'images/ind_progress.webp' %}">
-                    </div>
-
+                      
                       <div class="progress-bar" style="width: 25%">25%</div>
                       <p> 25/100 pages read so far</p>
                     </div>
@@ -54,11 +51,12 @@
                 </div>
               </div>
 
-              <div class="u-align-left u-container-style u-image u-layout-cell u-size-20 u-size-20-md u-image-1" style="padding-top: 40px;
+              <div class="u-align-left u-container-style u-image u-layout-cell u-size-20 u-size-20-md u-image-1" style="padding-top: 60px;
               padding-bottom: 40px;
-              padding-right: 40px;
-              padding-left: 40px">
-              <img class="u-image u-image-contain u-image-default u-image-1" src="{% static 'images/covers/9780060850524.jpg'%}">
+              padding-right: 10px;
+              padding-left: 10px">
+              <img src="{% static 'images/BraveNewWorld.jpg'%}" class="card-img-top">
+       
               </div>
 
 
@@ -75,7 +73,7 @@
         </div>
       </div>
     </section>
-    
+
    
 
    {% include "partials/_footer.html" %}

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="THE BOOKKEEPER">
-    <meta name="description" content="">
+    <meta name="summary" content="">
     <title>booklist</title>
     <link rel="stylesheet" href="{% static 'css/nicepage.css'%}" media="screen">
     <link rel="stylesheet" href="{% static 'css/booklist.css'%}" media="screen">
@@ -52,7 +52,7 @@
             
              <h4> {{ book.title }}</h4>
               {% if book.book_cover %}
-                  <img src= "{% static 'images/covers/' %}" alt="{{ book.title }}" style="width:100px; height: 100px">
+                  <img src= "{{ book.book_cover.url }}" alt="{{ book.title }}" style="width:150px; height: 200px">
                   {% else %}
                   <span class="text-muted">No cover </span>
                   {% endif %}
@@ -65,7 +65,7 @@
             class="u-border-1 u-border-active-grey-70 u-border-black u-border-hover-grey-70 
             u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn 
             u-button-style u-custom-item u-none u-radius-0 u-text-active-palette-2-base u-text-body-color u-text-hover-palette-2-base 
-            u-top-left-radius-0 u-top-right-radius-0 u-btn-2" >Book Detail</a>
+            u-top-left-radius-0 u-top-right-radius-0 u-btn-2" >STATUS: <br> Book Detail</a>
           </div>
         </div>
         {% endfor %}

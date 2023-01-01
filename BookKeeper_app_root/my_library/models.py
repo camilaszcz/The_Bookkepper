@@ -43,11 +43,11 @@ class Language(models.Model):
 
 class Book(models.Model):
     """Model representing a book."""
-    book_cover = models.ImageField(upload_to= 'static/images/covers/' , null=True, blank=True)
+    book_cover = models.ImageField(upload_to= 'media/' , null=True)
     title = models.CharField(max_length=50)
     author = models.CharField(max_length=50, default="Unkown")
     language = models.ForeignKey(Language, related_name='books',on_delete=models.CASCADE)
-    summary = models.TextField(max_length=1000, help_text="Enter a brief description of the book")
+    summary = models.TextField(max_length=1000, help_text="Enter a brief summary of the book")
     pg_num = models.IntegerField()
     status = models.ForeignKey(Status, related_name='books',on_delete=models.CASCADE)
     

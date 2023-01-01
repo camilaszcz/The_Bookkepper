@@ -1,6 +1,10 @@
+
+
 .u-section-1 .u-sheet-1 {
   min-height: 100vh;
 }
+
+
 
 .u-section-1 .u-image-1 {
   width: 331px;
@@ -15,7 +19,9 @@
   --track-color: #c0c0c0;
   --track-active-color: #a5abf0;
   width: 650px;
-  margin: 100px auto 0;
+  margin: 100px ;
+  justify-content: center;
+
 }
 
 .u-section-1 .u-form-group-1 {

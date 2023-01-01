@@ -1124,6 +1124,7 @@ a {
 .u-product-tab-pane > :last-child,
 .u-post-content > :last-child {
   margin-bottom: 0;
+  text-align: justify;
 }
 .u-block-content p,
 .u-product-desc p,
@@ -39048,6 +39049,8 @@ a.u-link.u-text-hover-grey-90:hover {
         margin-bottom: 20px;
         font-weight: 400;
         font-family: Montserrat,sans-serif;
+        color: #0f0f0f ;
+        text-align: center;
         }
         h3
         {
